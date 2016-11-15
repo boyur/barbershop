@@ -1,0 +1,20 @@
+$black: #000000;
+$white: #FFFFFF;
+
+html,
+body {
+  height: 100%;
+}
+
+.wrapper {
+  min-height: 100%;
+  height: auto;
+}
+
+.conteiner {
+  width: 960px;
+  height: 100%;
+  margin: auto;
+
+  @extend %clearfix;
+}

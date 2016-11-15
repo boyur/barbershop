@@ -1,0 +1,47 @@
+header {
+  background-color: $black;
+  color: $white;
+}
+
+.header {
+  box-sizing: border-box;
+
+  height: 72px;
+  padding: 12px 0;
+
+  @extend %clearfix;
+}
+
+.top-menu {
+  float: left;
+  margin: 0 30px;
+
+  ul {
+    padding: 0;
+  }
+}
+
+.top-menu__item {
+  display: inline-block;
+  list-style-type: none;
+  margin-right: 40px;
+
+  a {
+    text-decoration: none;
+    color: $white;
+  }
+}
+
+.auth {
+  float: right;
+  height: 100%;
+}
+
+.btn__login {
+  display: inline-block;
+  margin: 14px 30px;
+
+  color: $white;
+  background-color: transparent;
+  border: 0;
+}
