@@ -1,18 +1,18 @@
 doctype html
 html
   head
-    link(href="https://necolas.github.io/normalize.css/5.0.0/normalize.css" rel="stylesheet")
+    link(href="css/foundation.css" rel="stylesheet")
     link(href="css/main.css" rel="stylesheet")
 
   body
     .wrapper
       header
         .conteiner
-          .header
+          .header-content
             nav.top-menu
               ul
                 li.top-menu__item
-                 a(href="#") ИНФОРМАЦИ
+                  a(href="#") ИНФОРМАЦИ
                 li.top-menu__item
                   a(href="#") НОВОСТИ
                 li.top-menu__item
@@ -24,5 +24,14 @@ html
             .auth
               button.btn__login ВХОД
 
-    .footer
+      main
+        .conteiner
+          .logo
+            svg.logo__img
+              use(xlink:href='svg/Logo.svg#BORODINSKI_Logo')
+          .about
 
+          section.default
+          section.default
+
+    .footer

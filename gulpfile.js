@@ -3,21 +3,33 @@
 const gulp = require('gulp');
 const pug = require('gulp-pug');
 const sass = require('gulp-sass');
+const csso = require('gulp-csso');
 const sourcemaps = require('gulp-sourcemaps');
 const autoprefixer = require('gulp-autoprefixer');
 const concat = require('gulp-concat');
 const browserSync = require('browser-sync').create();
 
+let scssLibs = [
+    'style/plugins/normalize.css',
+    'style/plugins/font-awesome.css'
+];
 
-// Style
+// SCSS
 
-gulp.task('sass', function () {
-  return gulp.src('./style/**/*.scss')
+gulp.task('scss', function () {
+  return gulp.src('./style/main.scss')
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer(['last 8 versions'], {cascade: true}))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('./public/css'));
+});
+
+gulp.task('css-libs', function () {
+    return gulp.src(scssLibs)
+        .pipe(concat('foundation.css'))
+        .pipe(csso('foundation.css'))
+        .pipe(gulp.dest('./public/css'))
 });
 
 // PUG
@@ -33,7 +45,7 @@ gulp.task('pug', function buildHTML() {
 // WATCH
 
 gulp.task('watch', function () {
-  gulp.watch('./style/**/*.scss', gulp.series('sass'));
+  gulp.watch('./style/**/*.scss', gulp.series('scss'));
   gulp.watch('./views/**/*.pug', gulp.series('pug'));
 });
 
@@ -52,7 +64,8 @@ gulp.task('browser-sync', function() {
 
 gulp.task('default', gulp.series(
   gulp.parallel(
-    'sass',
+    'scss',
+    'css-libs',
     'pug'
   ),
     'watch')
